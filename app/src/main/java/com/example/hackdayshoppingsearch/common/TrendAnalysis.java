@@ -19,19 +19,15 @@ public class TrendAnalysis {
     public boolean isIncreasing(int longTerm, int shortTerm) {
         MovingAverage longTermMovingAverage = new SimpleMovingAverage(longTerm);
         MovingAverage shortTermMovingAverage = new SimpleMovingAverage(shortTerm);
-        List<Float> longTermMovingAverageValues = new ArrayList<>();
-        List<Float> shortTermMovingAverageValues = new ArrayList<>();
         for(TrendRatioData data : trendRatioData) {
             longTermMovingAverage.addValue(data.getRatio().floatValue());
             shortTermMovingAverage.addValue(data.getRatio().floatValue());
-            longTermMovingAverageValues.add(longTermMovingAverage.getAverage());
-            shortTermMovingAverageValues.add(shortTermMovingAverage.getAverage());
         }
-        return isAfterGoldenCrossing(longTermMovingAverageValues, shortTermMovingAverageValues);
+        return isAfterGoldenCrossing(longTermMovingAverage.getAverage(), shortTermMovingAverage.getAverage());
     }
 
-    public boolean isAfterGoldenCrossing(List<Float> longTerm, List<Float> shortTerm) {
-        return longTerm.get(longTerm.size() - 1) < shortTerm.get(shortTerm.size() - 1);
+    public boolean isAfterGoldenCrossing(float longTermAverage, float shortTermAverage) {
+        return longTermAverage < shortTermAverage;
     }
 
 }
