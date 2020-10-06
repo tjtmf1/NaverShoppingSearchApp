@@ -35,6 +35,9 @@ JAVA
     }
   ```
 
+## 추가 기능
+* Refresh Token과 SharedPreference를 이용한 자동 로그인 기능
+* 검색 기록 저장
 
 ## 실행화면
 ![image](https://user-images.githubusercontent.com/37248023/95196451-0e2a8300-0813-11eb-8deb-0ef81dafa520.png)
